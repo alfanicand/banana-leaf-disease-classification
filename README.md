@@ -23,3 +23,4 @@ Penelitian ini menggunakan pendekatan **transfer learning** dengan dua skenario 
 4. Mengevaluasi kemampuan generalisasi model menggunakan **dataset luar** dengan kondisi lapangan yang lebih natural.
 
 ---
+## Link deployment = https://banana-leaf-classifier.streamlit.app/
