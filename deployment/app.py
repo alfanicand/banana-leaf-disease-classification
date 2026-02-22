@@ -8,7 +8,9 @@ from PIL import Image
 # =============================
 st.set_page_config(
     page_title="Perbandingan Model Penyakit Daun Pisang",
-    layout="centered"
+    #layout="centered"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
 CLASS_NAMES = ['cordana', 'healthy', 'pestalotiopsis', 'sigatoka']
