@@ -13,24 +13,42 @@ st.set_page_config(
 
 CLASS_NAMES = ['cordana', 'healthy', 'pestalotiopsis', 'sigatoka']
 
-CLASS_INFO = {
-    "cordana": {
-        "deskripsi": "Cordana merupakan penyakit daun yang ditandai dengan bercak coklat hingga keabu-abuan pada permukaan daun.",
-        "penanganan": "Penanganan dapat dilakukan dengan pemangkasan daun terinfeksi dan penggunaan fungisida sesuai anjuran."
-    },
-    "healthy": {
-        "deskripsi": "Daun dalam kondisi sehat tanpa gejala penyakit yang terlihat.",
-        "penanganan": "Lakukan perawatan rutin, pemupukan seimbang, dan pemantauan berkala untuk menjaga kesehatan tanaman."
-    },
-    "pestalotiopsis": {
-        "deskripsi": "Pestalotiopsis ditandai dengan bercak tidak beraturan berwarna coklat dengan tepi lebih gelap.",
-        "penanganan": "Pengendalian dapat dilakukan dengan sanitasi kebun, mengurangi kelembaban berlebih, dan aplikasi fungisida bila diperlukan."
-    },
-    "sigatoka": {
-        "deskripsi": "Sigatoka ditandai dengan bercak kecil memanjang berwarna kuning hingga coklat yang dapat menyatu dan mengering.",
-        "penanganan": "Pengendalian dilakukan dengan pemangkasan daun terinfeksi dan penyemprotan fungisida secara teratur sesuai rekomendasi."
-    }
-}
+# =============================
+# Informasi Penyakit (Sidebar)
+# =============================
+st.sidebar.title("Informasi Penyakit")
+
+st.sidebar.markdown("### 🟤 Cordana")
+st.sidebar.write(
+    "Bercak coklat hingga keabu-abuan pada permukaan daun."
+)
+st.sidebar.write(
+    "Penanganan: Pemangkasan daun terinfeksi dan penggunaan fungisida sesuai anjuran."
+)
+
+st.sidebar.markdown("### 🟢 Healthy")
+st.sidebar.write(
+    "Daun dalam kondisi sehat tanpa gejala penyakit."
+)
+st.sidebar.write(
+    "Penanganan: Lakukan perawatan rutin dan pemantauan berkala."
+)
+
+st.sidebar.markdown("### 🟠 Pestalotiopsis")
+st.sidebar.write(
+    "Bercak tidak beraturan berwarna coklat dengan tepi lebih gelap."
+)
+st.sidebar.write(
+    "Penanganan: Sanitasi kebun dan pengurangan kelembaban berlebih."
+)
+
+st.sidebar.markdown("### 🟡 Sigatoka")
+st.sidebar.write(
+    "Bercak kecil memanjang berwarna kuning hingga coklat."
+)
+st.sidebar.write(
+    "Penanganan: Pemangkasan daun terinfeksi dan penyemprotan fungisida."
+)
 
 # =============================
 # Load models (Fixed Feature)
@@ -112,11 +130,6 @@ if uploaded_file is not None:
         st.bar_chart(
             {CLASS_NAMES[i]: float(pred_mn[i]) for i in range(len(CLASS_NAMES))}
         )
-        st.markdown("**Deskripsi Penyakit:**")
-        st.write(CLASS_INFO[CLASS_NAMES[idx_mn]]["deskripsi"])
-
-        st.markdown("**Saran Penanganan:**")
-        st.write(CLASS_INFO[CLASS_NAMES[idx_mn]]["penanganan"])
 
     with col2:
         st.markdown("### EfficientNetB0 (Fixed Feature)")
@@ -126,8 +139,3 @@ if uploaded_file is not None:
         st.bar_chart(
             {CLASS_NAMES[i]: float(pred_ef[i]) for i in range(len(CLASS_NAMES))}
         )
-        st.markdown("**Deskripsi Penyakit:**")
-        st.write(CLASS_INFO[CLASS_NAMES[idx_ef]]["deskripsi"])
-
-        st.markdown("**Saran Penanganan:**")
-        st.write(CLASS_INFO[CLASS_NAMES[idx_ef]]["penanganan"])
