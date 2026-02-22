@@ -8,49 +8,10 @@ from PIL import Image
 # =============================
 st.set_page_config(
     page_title="Perbandingan Model Penyakit Daun Pisang",
-    #layout="centered"
-    layout="wide",
-    initial_sidebar_state="expanded"
+    layout="centered"
 )
 
 CLASS_NAMES = ['cordana', 'healthy', 'pestalotiopsis', 'sigatoka']
-
-# =============================
-# Informasi Penyakit (Sidebar)
-# =============================
-st.sidebar.title("Informasi Penyakit")
-
-st.sidebar.markdown("### 🟤 Cordana")
-st.sidebar.write(
-    "Bercak coklat hingga keabu-abuan pada permukaan daun."
-)
-st.sidebar.write(
-    "Penanganan: Pemangkasan daun terinfeksi dan penggunaan fungisida sesuai anjuran."
-)
-
-st.sidebar.markdown("### 🟢 Healthy")
-st.sidebar.write(
-    "Daun dalam kondisi sehat tanpa gejala penyakit."
-)
-st.sidebar.write(
-    "Penanganan: Lakukan perawatan rutin dan pemantauan berkala."
-)
-
-st.sidebar.markdown("### 🟠 Pestalotiopsis")
-st.sidebar.write(
-    "Bercak tidak beraturan berwarna coklat dengan tepi lebih gelap."
-)
-st.sidebar.write(
-    "Penanganan: Sanitasi kebun dan pengurangan kelembaban berlebih."
-)
-
-st.sidebar.markdown("### 🟡 Sigatoka")
-st.sidebar.write(
-    "Bercak kecil memanjang berwarna kuning hingga coklat."
-)
-st.sidebar.write(
-    "Penanganan: Pemangkasan daun terinfeksi dan penyemprotan fungisida."
-)
 
 # =============================
 # Load models (Fixed Feature)
@@ -88,6 +49,25 @@ st.write(
     "Aplikasi ini membandingkan hasil klasifikasi penyakit daun pisang "
     "menggunakan **MobileNetV2 dan EfficientNetB0 pada skenario Fixed Feature** "
 )
+
+st.markdown("---")
+st.subheader("Informasi Kelas Penyakit")
+
+with st.expander("🟤 Cordana"):
+    st.write("Bercak coklat hingga keabu-abuan pada permukaan daun.")
+    st.write("Penanganan: Pemangkasan daun terinfeksi dan penggunaan fungisida sesuai anjuran.")
+
+with st.expander("🟢 Healthy"):
+    st.write("Daun dalam kondisi sehat tanpa gejala penyakit.")
+    st.write("Penanganan: Lakukan perawatan rutin dan pemantauan berkala.")
+
+with st.expander("🟠 Pestalotiopsis"):
+    st.write("Bercak tidak beraturan berwarna coklat dengan tepi lebih gelap.")
+    st.write("Penanganan: Sanitasi kebun dan pengurangan kelembaban berlebih.")
+
+with st.expander("🟡 Sigatoka"):
+    st.write("Bercak kecil memanjang berwarna kuning hingga coklat.")
+    st.write("Penanganan: Pemangkasan daun terinfeksi dan penyemprotan fungisida.")
 
 uploaded_file = st.file_uploader(
     "Upload gambar daun pisang",
